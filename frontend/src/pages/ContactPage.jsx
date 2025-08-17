@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
+// Environment variable for API base URL
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
 const ContactPage = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -20,7 +23,7 @@ const ContactPage = () => {
         setIsSubmitting(true);
 
         try {
-            const response = await fetch('http://localhost:5000/api/contact/contact', {
+            const response = await fetch(`${API_BASE}/contact/contact`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
